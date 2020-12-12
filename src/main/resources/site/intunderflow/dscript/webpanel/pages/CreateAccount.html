@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Create account</h1>
+<#if showForm>
+<form action method="get">
+    <input type="hidden" name="create_account" value="yes"/>
+    What sort of account do you want?
+    <select name="type">
+        <option value="basic_tink">Basic Signature (Tink)</option>
+    </select>
+    <br/><br/>
+    <input type="submit" value="Create account"/>
+</form>
+<#else>
+<#if error??>
+<b style="color:red;">${error}</b>
+<#else>
+<b>These are your account keys:</b><br/>
+${keys}
+<br/><br/>
+<b>This is your account address:</b>
+<h2>${address}</h2>
+</#if>
+</#if>
+</body>
+</html>

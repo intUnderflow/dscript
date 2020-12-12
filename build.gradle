@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+group 'site.intunderflow'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileWithJar
+}
+
+dependencies {
+    compileWithJar 'com.google.guava:guava:27.0.1-jre'
+    compileWithJar 'com.sparkjava:spark-core:2.7.2'
+    compileWithJar 'org.json:json:20180813'
+    compileWithJar 'org.apache.httpcomponents:httpclient:4.5.7'
+    compileWithJar 'org.apache.commons:commons-lang3:3.9'
+    compileWithJar 'commons-io:commons-io:2.6'
+    compileWithJar 'commons-validator:commons-validator:1.6'
+    compileWithJar 'com.google.crypto.tink:tink:1.2.2'
+    compileWithJar 'org.freemarker:freemarker:2.3.28'
+    compileWithJar 'com.google.zxing:core:3.3.3'
+    compileWithJar 'com.google.zxing:javase:3.3.3'
+    configurations.compile.extendsFrom(configurations.compileWithJar)
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.googlecode.junit-toolbox:junit-toolbox:1.5'
+}
+
+jar {
+    from {
+        configurations.compileWithJar.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    sourceSets {
+        main {
+            resources {
+                srcDirs "src/main/resources"
+            }
+        }
+    }
+    manifest{
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'site.intunderflow.dscript.runners.StandardNode'
+        )
+    }
+}

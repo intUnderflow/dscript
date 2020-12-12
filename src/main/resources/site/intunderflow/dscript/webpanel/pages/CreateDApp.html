@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Create Application</h1>
+<#if showForm>
+<form action method="post">
+    <input type="hidden" name="create_dapp" value="yes"/>
+    Paste in the Bytecode of your DApp below to create it.
+    <input type="text" name="bytecode_hex" required/>
+    <br/><br/>
+    Optionally, enter files to store with the DApp.
+    <input type="text" name="files_hex" required/>
+    <br/><br/>
+    <input type="submit" value="Create DApp"/>
+</form>
+<#else>
+<#if error??>
+<b style="color:red;">${error}</b>
+<#else>
+<b>DApp address:</b><br/>
+${address}
+</#if>
+</#if>
+</body>
+</html>

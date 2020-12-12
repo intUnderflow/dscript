@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your account</title>
+    <style type="text/css">
+        pre {
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+    </style>
+</head>
+<body>
+<h1>Your account</h1>
+<br/><br/>
+<center>
+<#outputformat "HTML">
+<#autoesc>
+<#assign notFirst=false>
+<#list blocks as block>
+<#if notFirst>
+<h1>↓</h1>
+<#else>
+<#assign notFirst=true>
+</#if>
+<h2>${block.getType()?lower_case}</h2>
+<pre>${block}</pre>
+</#list>
+</#autoesc>
+</#outputformat>
+</center>
+</body>
+</html>

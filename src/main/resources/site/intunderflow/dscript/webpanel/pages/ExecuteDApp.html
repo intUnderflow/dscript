@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Run Application</h1>
+<#if showForm>
+<form action method="get">
+    <input type="hidden" name="execute_dapp" value="yes"/>
+    Enter DApp Address:
+    <input type="text" name="dapp_address" required/>
+    <br/><br/>
+    Enter Input:
+    <input type="text" name="hex_input" required/>
+    <br/><br/>
+    <input type="submit" value="Run DApp"/>
+</form>
+<#else>
+<#if error??>
+<b style="color:red;">${error}</b>
+<#else>
+Executing...
+</#if>
+</#if>
+</body>
+</html>

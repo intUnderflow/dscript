@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+</head>
+<body>
+<#if error??>
+<b style="color:red;">${error}</b>
+</#if>
+<#if availableBalance??><#if transferred??>
+<b>Transfer made!</b>
+<#else>
+<h2>Transfer tokens:</h2>
+Your available balance is <b>${availableBalance}</b><br/><br/>
+<form action method="get"/>
+<input type="hidden" name="doublespend_prevent" value="${doublespend}"/>
+<input type="text" name="to" placeholder="Address or name to send to"/>
+<br/><br/>
+<input type="number" name="amount" placeholder="Amount to send"/>
+<br/><br/>
+<input type="submit" value="Perform transfer"/>
+</form>
+</#if>
+<#else>
+<b>No commander instance attached to this web panel, cannot transfer.</b>
+</#if>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friendly Name</title>
+</head>
+<body>
+<h1>Enrol a friendly name for your account.</h1>
+<#if nameEnrolled??>
+<h2>If the name was available, it will be registered to your account in the next 10-60 seconds.</h2>
+</#if>
+<b>Every name must be between 1 and 20 characters long, and can only contains letters and numbers (no spaces or symbols)</b><br/>
+<form action method="get">
+    <input type="text" name="address" value="<#if myAddress??>${myAddress}</#if>" placeholder="Enter your 128 character hex account address."/>
+    <br/><br/>
+    <input type="text" name="name" placeholder="Enter the friendly name for your account."/>
+    <br/><br/>
+    <input type="hidden" name="register_friendly_name" value="yes"/>
+    <input type="submit" value="Attempt to register name"/>
+</form>
+<br/><br/>
+<h2>Query the Name Service</h2>
+<#if queryName??>
+<#if queryAddress??>
+<b>The address for ${queryName} is ${queryAddress}.</b><br/>
+<#else>
+<b>The name ${queryName} is not registered (you can register it now!)</b><br/>
+</#if>
+</#if>
+You can query your local name service here, just type in a name to query:<br/>
+<form action method="get">
+    <input type="text" name="query" placeholder="Enter the name to query here"/>
+    <br/><br/>
+    <input type="submit" value="Attempt to query"/>
+</form>
+</body>
+</html>

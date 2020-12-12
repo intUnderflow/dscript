@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>DScript Node</title>
+</head>
+<body>
+<h1>DScript</h1>
+Alive nodes known: ${addressCount}<br/><br/>
+LDDB resources available locally: ${lddbCount}<br/>
+<i>Any other resource is remote.</i><br/>
+<br/>
+<#if balance??>
+<h3>Your confirmed balance: ${balance}</h3>
+</#if>
+<br/><br/>
+<h2>Available actions</h2>
+<a href="${baseUrl}/create_account">Create an account on the network.</a><br/>
+<a href="${baseUrl}/send_transfer">Transfer tokens.</a><br/>
+<a href="${baseUrl}/enrol_fname">Set up a friendly name for your account.</a><br/>
+<a href="${baseUrl}/create_dapp">Create a Decentralized Application (DApp)</a><br/>
+<a href="${baseUrl}/execute_dapp">Execute a Decentralized Application (DApp)</a>
+</body>
+</html>
